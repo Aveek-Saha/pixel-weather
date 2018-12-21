@@ -1,0 +1,67 @@
+@font-face {
+  font-family: Pixel;
+  src: url(./PressStart2P-Regular.ttf);
+}
+
+body{
+    font-family: Pixel;
+    display: flex;
+    text-align: center ;
+    justify-content: center;
+    -webkit-user-select: none;
+    /* background-color: transparent */
+}
+
+@media only screen and (max-width: 400px) {
+  body {
+    font-size: 1em
+  }
+  .icon{
+    width: 64px
+  }
+} 
+
+@media only screen and (min-width: 400px) {
+  body {
+    font-size: 1.2em
+  }
+  .icon{
+    width: 80px
+  }
+} 
+
+@media only screen and (min-width: 500px) {
+  body {
+    font-size: 1.5em
+  }
+  .icon{
+    width: 96px
+  }
+} 
+
+@media only screen and (min-width: 600px) {
+  body {
+    font-size: 1.7em
+  }
+  .icon{
+    width: 112px
+  }
+} 
+
+
+.centered {
+    padding-top: 10%
+}
+
+.menubar {
+  position: absolute;
+  top: 0%;
+  left: 1%;
+  color: inherit;
+  opacity: 0.3;
+}
+
+a:hover {
+  text-decoration: none;
+  /* color: inherit; */
+}

@@ -1,0 +1,27 @@
+{
+  "name": "PixelWeather",
+  "version": "1.0.0",
+  "description": "A pixelated weather widget for your desktop",
+  "homepage": "https://aveek-saha.github.io",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "Aveek Saha <aveek.s98@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^3.0.7"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "electron-drag": "^1.2.2"
+  }
+}
