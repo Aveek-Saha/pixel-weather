@@ -1,7 +1,8 @@
 const axios = require('axios')
-var drag = require('electron-drag');
 const remote = require('electron').remote;
 const { Menu, MenuItem } = remote
+const Positioner = require('electron-positioner')
+var positioner = new Positioner(remote.getCurrentWindow())
 
 const key = config.WEATHER_API_KEY
  
@@ -19,16 +20,10 @@ getWeather()
 
 document.getElementById("close-btn").addEventListener("click", (e) => {
     e.preventDefault()
-    menu.popup(remote.getCurrentWindow())
+    // menu.popup(remote.getCurrentWindow())
+    const window = remote.getCurrentWindow();
+    window.close();
 }, false)
-
-if (!drag.supported) {
-    document.querySelector('#main').style['-webkit-app-region'] = 'drag';
-}
-else {
-    var clear = drag('#main');
-    clear();
-}
 
 const menu = new Menu()
 
@@ -58,6 +53,66 @@ menu.append(new MenuItem({
     }
 }))
 
+menu.append(new MenuItem({ type: 'separator' }))
+menu.append(new MenuItem({
+    label: 'Position',
+    submenu: [
+        {
+            label: 'Top Left',
+            click: () => {
+                positioner.move('topLeft')
+            }
+        }, {
+        label: 'Top Right',
+            click: () => {
+                positioner.move('topRight')
+            }
+        },
+        {
+            label: 'bottomLeft',
+            click: () => {
+                positioner.move('bottomLeft')
+            }
+        },
+        {
+            label: 'Bottom Right',
+            click: () => {
+                positioner.move('bottomRight')
+            }
+        },
+        {
+            label: 'Top Center',
+            click: () => {
+                positioner.move('topCenter')
+            }
+        },
+        {
+            label: 'Bottom Center',
+            click: () => {
+                positioner.move('bottomCenter')
+            }
+        },
+        {
+            label: 'Left Center',
+            click: () => {
+                positioner.move('leftCenter')
+            }
+        },
+        {
+            label: 'Right Center',
+            click: () => {
+                positioner.move('rightCenter')
+            }
+        },
+        {
+            label: 'Center',
+            click: () => {
+                positioner.move('center')
+            }
+        }
+    ]
+}))
+
 // Prevent default action of right click in chromium. Replace with our menu.
 window.addEventListener('contextmenu', (e) => {
     e.preventDefault()
@@ -83,7 +138,7 @@ function getWeather() {
                     axios.get(WEATHER_API_URL + latitude + "," + longitude + WEATHER_PARAMS)
                         .then(function (response) {
                             console.log([response.data.currently.summary, response.data.currently.temperature, response.data.currently.icon]);
-                            temp.innerHTML = response.data.currently.temperature
+                            temp.innerHTML = response.data.currently.temperature + "<sup>o</sup>"
                             summary.innerHTML = response.data.currently.summary
                             icon.src = "./icons/" + response.data.currently.icon + ".svg"
 
