@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="./style/nes.css" rel="stylesheet" />
+    <link href="./style/styles.css" rel="stylesheet" />
+    <script type='text/javascript' src='config.js'></script>
+</head>
+
+<body id="setings">
+
+    <div class="container">
+        <div class="row">
+            <div class="nes-field is-inline">
+                <label for="inline_field">Dark Sky API key</label>
+                <input type="text" id="api" class="nes-input is-success" placeholder="Enter Key">
+            </div>
+        </div>
+
+        <div class="row">
+            <label for="default_select">Refresh Interval</label>
+            <div class="nes-select">
+                <select required id="refresh">
+                    <!-- <option value="" disabled selected hidden>Select...</option> -->
+                    <option value="15" selected>15 min</option>
+                    <option value="30">30 min</option>
+                    <option value="60">1 hr</option>
+                    <option value="120">2 hr</option>
+                    <option value="300">5 hr</option>
+                    <option value="720">12 hr</option>
+                </select>
+            </div>
+        </div>
+
+        <br>
+        <div class="row">
+            <button type="button" id="updateBtn" class="nes-btn is-primary">Submit</button>
+            <!-- <button type="button" id="closeBtn" class="nes-btn is-danger">Close</button> -->
+        </div>
+
+        
+    </div>
+
+    
+    
+    <script>
+        require('./settings.js')
+    </script>
+</body>
+
+</html>

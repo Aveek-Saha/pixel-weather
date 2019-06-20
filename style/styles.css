@@ -12,6 +12,12 @@ body{
     /* background-color: transparent */
 }
 
+#settings{
+    margin-top: 2%;
+    font-size: 1%;
+    background-color: lightblue;
+}
+
 @media only screen and (max-width: 400px) {
   body {
     font-size: 1em

@@ -1,6 +1,6 @@
 const axios = require('axios')
 const remote = require('electron').remote;
-const { Menu, MenuItem } = remote
+const { Menu, MenuItem, BrowserWindow } = remote
 const Positioner = require('electron-positioner')
 var positioner = new Positioner(remote.getCurrentWindow())
 
@@ -33,6 +33,24 @@ menu.append(new MenuItem({
     click() {
         const window = remote.getCurrentWindow();
         window.close();
+    }
+}))
+menu.append(new MenuItem({
+    label: 'Settings',
+    click() {
+        // const modalPath = path.join('file://', __dirname, 'settings.html');
+        let win = new BrowserWindow({ 
+            height: 400, 
+            width: 600,
+            frame: false,
+            alwaysOnTop: true,
+            webPreferences: {
+                nodeIntegration: true
+            }
+        });
+        win.on('close', () => { win = null });
+        win.loadFile('settings.html');
+        win.show();
     }
 }))
 
