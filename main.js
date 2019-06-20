@@ -10,9 +10,9 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     width: 300, 
     height: 330, 
-    // frame: false,
-    // transparent: true,
-    // type: "desktop",
+    frame: false,
+    transparent: true,
+    type: "desktop",
     webPreferences: {
       nodeIntegration: true
     }
@@ -22,7 +22,7 @@ function createWindow () {
   mainWindow.loadFile('index.html')
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -56,7 +56,6 @@ app.on('activate', function () {
 })
 
 ipcMain.on('update', (event, res) => {
-  console.log(res);
   
   mainWindow.webContents.send('update_store', res)
 })
