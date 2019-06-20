@@ -6,6 +6,8 @@ const storage = require('electron-json-storage');
 var positioner = new Positioner(remote.getCurrentWindow())
 
 const ipc = require('electron').ipcRenderer
+var interval
+var allowRefresh = false
 
 storage.get('settings', function (error, data) {
     if (error) throw error;
@@ -16,11 +18,13 @@ storage.get('settings', function (error, data) {
         openSettings()
     else if (data.refresh == undefined && data.api != undefined) {
         getWeather(data.api)
-        setInterval(() => { getWeather(data.api) }, 15 * 60 * 1000);
+        interval = setInterval(() => { getWeather(data.api) }, 15 * 60 * 1000);
+        allowRefresh = true
     }
     else if (data.refresh != undefined && data.api != undefined) {
         getWeather(data.api)
-        setInterval(() => { getWeather(data.api) }, data.refresh * 60 * 1000);
+        interval = setInterval(() => { getWeather(data.api) }, data.refresh * 60 * 1000);
+        allowRefresh = true
     }
 });
 
@@ -49,6 +53,28 @@ var location = document.getElementById("location")
 //     const window = remote.getCurrentWindow();
 //     window.close();
 // }, false)
+
+function refresh() {
+    storage.get('settings', function (error, data) {
+        if (error) throw error;
+
+        if (!allowRefresh) return;
+
+        console.log(interval);
+        clearInterval(interval)
+
+        if (data.api == undefined)
+            openSettings()
+        else if (data.refresh == undefined && data.api != undefined) {
+            getWeather(data.api)
+            interval = setInterval(() => { getWeather(data.api) }, 15 * 60 * 1000);
+        }
+        else if (data.refresh != undefined && data.api != undefined) {
+            getWeather(data.api)
+            interval = setInterval(() => { getWeather(data.api) }, data.refresh * 60 * 1000);
+        }
+    });
+}
 
 function openSettings() {
     let win = new BrowserWindow({
@@ -79,6 +105,13 @@ menu.append(new MenuItem({
     label: 'Settings',
     click() {
         openSettings()
+    }
+}))
+
+menu.append(new MenuItem({
+    label: 'Refresh',
+    click() {
+        refresh()
     }
 }))
 
