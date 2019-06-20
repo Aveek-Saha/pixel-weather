@@ -43,18 +43,18 @@ var icon = document.getElementById("icon")
 var location = document.getElementById("location")
 
 
-document.getElementById("close-btn").addEventListener("click", (e) => {
-    e.preventDefault()
-    // menu.popup(remote.getCurrentWindow())
-    const window = remote.getCurrentWindow();
-    window.close();
-}, false)
+// document.getElementById("close-btn").addEventListener("click", (e) => {
+//     e.preventDefault()
+//     // menu.popup(remote.getCurrentWindow())
+//     const window = remote.getCurrentWindow();
+//     window.close();
+// }, false)
 
 function openSettings() {
     let win = new BrowserWindow({
         height: 350,
         width: 400,
-        // frame: false,
+        frame: false,
         alwaysOnTop: true,
         webPreferences: {
             nodeIntegration: true
