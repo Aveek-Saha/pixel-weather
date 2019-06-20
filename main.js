@@ -9,10 +9,11 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 300, 
-    height: 330, 
+    height: 310, 
     frame: false,
     transparent: true,
     type: "desktop",
+    icon: __dirname + '/pixel.png',
     webPreferences: {
       nodeIntegration: true
     }

@@ -80,7 +80,7 @@ function openSettings() {
     let win = new BrowserWindow({
         height: 350,
         width: 400,
-        // frame: false,
+        icon: __dirname + '/pixel.png',
         alwaysOnTop: true,
         webPreferences: {
             nodeIntegration: true
@@ -148,7 +148,7 @@ menu.append(new MenuItem({
             }
         },
         {
-            label: 'bottomLeft',
+            label: 'Bottom Left',
             click: () => {
                 positioner.move('bottomLeft')
             }
