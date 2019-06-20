@@ -33,7 +33,7 @@ ipc.on('update_store', (event, res) => {
         if (error) throw error;
 
         console.log(res);
-        
+        refresh()
     });
 })
  
