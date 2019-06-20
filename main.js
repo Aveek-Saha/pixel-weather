@@ -56,5 +56,7 @@ app.on('activate', function () {
 })
 
 ipcMain.on('update', (event, res) => {
+  console.log(res);
+  
   mainWindow.webContents.send('update_store', res)
 })

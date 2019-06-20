@@ -7,9 +7,11 @@ var positioner = new Positioner(remote.getCurrentWindow())
 
 const ipc = require('electron').ipcRenderer
 
-storage.get('setings', function (error, data) {
+storage.get('settings', function (error, data) {
     if (error) throw error;
 
+    console.log(data);
+    
     if (data.api == undefined)
         openSettings()
     else if (data.refresh == undefined && data.api != undefined) {
@@ -25,6 +27,9 @@ storage.get('setings', function (error, data) {
 ipc.on('update_store', (event, res) => {
     storage.set('settings', res, function (error) {
         if (error) throw error;
+
+        console.log(res);
+        
     });
 })
  

@@ -12,17 +12,14 @@ storage.get('settings', function (error, data) {
     if (error) throw error;
 
     console.log(data.api == undefined);
-    if (data.api == undefined)
-        api.innerHTML = ""
-    else {
-        api.innerHTML = data.api
-    }
+    if (data.api != undefined)
+        api.value = data.api
 
 });
 
 updateBtn.addEventListener('click', () => {
 
-    if (api.innerHTML != "") {
+    if (api.value != "") {
         ipc.send('update', {
             "refresh": document.getElementById('refresh').value,
             "api": document.getElementById('api').value
