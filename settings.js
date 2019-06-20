@@ -21,12 +21,13 @@ storage.get('settings', function (error, data) {
 });
 
 updateBtn.addEventListener('click', () => {
-    
-    ipc.send('update', {
-        "refresh": document.getElementById('refresh').value,
-        "api": document.getElementById('api').value
-    })
 
+    if (api.innerHTML != "") {
+        ipc.send('update', {
+            "refresh": document.getElementById('refresh').value,
+            "api": document.getElementById('api').value
+        })
+    }
     var window = remote.getCurrentWindow();
     window.close();
 })

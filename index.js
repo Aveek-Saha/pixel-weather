@@ -2,13 +2,34 @@ const axios = require('axios')
 const remote = require('electron').remote;
 const { Menu, MenuItem, BrowserWindow } = remote
 const Positioner = require('electron-positioner')
+const storage = require('electron-json-storage');
 var positioner = new Positioner(remote.getCurrentWindow())
 
-const key = config.WEATHER_API_KEY
+const ipc = require('electron').ipcRenderer
+
+storage.get('setings', function (error, data) {
+    if (error) throw error;
+
+    if (data.api == undefined)
+        openSettings()
+    else if (data.refresh == undefined && data.api != undefined) {
+        getWeather(data.api)
+        setInterval(() => { getWeather(data.api) }, 15 * 60 * 1000);
+    }
+    else if (data.refresh != undefined && data.api != undefined) {
+        getWeather(data.api)
+        setInterval(() => { getWeather(data.api) }, data.refresh * 60 * 1000);
+    }
+});
+
+ipc.on('update_store', (event, res) => {
+    storage.set('settings', res, function (error) {
+        if (error) throw error;
+    });
+})
  
 const IP_API_URL = "https://api.ipify.org/?format=json";
 const LOCATION_API_URL = "https://www.iplocate.io/api/lookup/";
-const WEATHER_API_URL = "https://api.darksky.net/forecast/"+ key +"/"
 const WEATHER_PARAMS = "?exclude=[hourly,daily,minutely,alerts,flags,minutely]&units=auto"
 
 var temp = document.getElementById("temp")
@@ -16,7 +37,6 @@ var summary = document.getElementById("summary")
 var icon = document.getElementById("icon")
 var location = document.getElementById("location")
 
-getWeather()
 
 document.getElementById("close-btn").addEventListener("click", (e) => {
     e.preventDefault()
@@ -24,6 +44,21 @@ document.getElementById("close-btn").addEventListener("click", (e) => {
     const window = remote.getCurrentWindow();
     window.close();
 }, false)
+
+function openSettings() {
+    let win = new BrowserWindow({
+        height: 350,
+        width: 400,
+        // frame: false,
+        alwaysOnTop: true,
+        webPreferences: {
+            nodeIntegration: true
+        }
+    });
+    win.on('close', () => { win = null });
+    win.loadFile('settings.html');
+    win.show();
+}
 
 const menu = new Menu()
 
@@ -38,19 +73,7 @@ menu.append(new MenuItem({
 menu.append(new MenuItem({
     label: 'Settings',
     click() {
-        // const modalPath = path.join('file://', __dirname, 'settings.html');
-        let win = new BrowserWindow({ 
-            height: 400, 
-            width: 600,
-            frame: false,
-            alwaysOnTop: true,
-            webPreferences: {
-                nodeIntegration: true
-            }
-        });
-        win.on('close', () => { win = null });
-        win.loadFile('settings.html');
-        win.show();
+        openSettings()
     }
 }))
 
@@ -138,7 +161,7 @@ window.addEventListener('contextmenu', (e) => {
 }, false)
 
 
-function getWeather() {
+function getWeather(api_key) {
     axios.get(IP_API_URL)
         .then(function (response) {
             const ip = response.data.ip
@@ -153,7 +176,7 @@ function getWeather() {
                     location.innerHTML = response.data.city
 
 
-                    axios.get(WEATHER_API_URL + latitude + "," + longitude + WEATHER_PARAMS)
+                    axios.get("https://api.darksky.net/forecast/" + api_key + "/" + latitude + "," + longitude + WEATHER_PARAMS)
                         .then(function (response) {
                             console.log([response.data.currently.summary, response.data.currently.temperature, response.data.currently.icon]);
                             temp.innerHTML = response.data.currently.temperature + "<sup>o</sup>"
