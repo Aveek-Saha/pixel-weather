@@ -9,7 +9,8 @@ body{
     text-align: center ;
     justify-content: center;
     -webkit-user-select: none;
-    padding: 3%
+    padding: 3%;
+    word-break: break-all;
     /* background-color: transparent */
 }
 

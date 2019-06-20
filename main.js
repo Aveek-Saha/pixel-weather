@@ -9,7 +9,7 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 300, 
-    height: 300, 
+    height: 330, 
     // frame: false,
     // transparent: true,
     // type: "desktop",

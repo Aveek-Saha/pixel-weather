@@ -1,5 +1,4 @@
 const electron = require('electron')
-const path = require('path')
 const storage = require('electron-json-storage');
 
 const remote = electron.remote

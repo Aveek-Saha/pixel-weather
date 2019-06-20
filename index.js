@@ -54,7 +54,7 @@ function openSettings() {
     let win = new BrowserWindow({
         height: 350,
         width: 400,
-        frame: false,
+        // frame: false,
         alwaysOnTop: true,
         webPreferences: {
             nodeIntegration: true
