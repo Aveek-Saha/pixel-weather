@@ -8,6 +8,7 @@ var positioner = new Positioner(remote.getCurrentWindow())
 const ipc = require('electron').ipcRenderer
 var interval
 var allowRefresh = false
+var type = "pixel"
 
 storage.get('settings', function (error, data) {
     if (error) throw error;
@@ -219,7 +220,7 @@ function getWeather(api_key) {
                             console.log([response.data.currently.summary, response.data.currently.temperature, response.data.currently.icon]);
                             temp.innerHTML = response.data.currently.temperature + "<sup>o</sup>"
                             summary.innerHTML = response.data.currently.summary
-                            icon.src = "./icons/" + response.data.currently.icon + ".svg"
+                            icon.src = "./icons/" + type + "/" + response.data.currently.icon + ".svg"
 
                         })
                 })
