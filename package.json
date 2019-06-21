@@ -6,7 +6,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "publish": "build --linux --win -p always",
+    "publish": "build --linux -p always",
     "dist": "build"
   },
   "build": {
