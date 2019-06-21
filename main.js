@@ -1,6 +1,7 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, ipcMain} = require('electron')
-const { autoUpdater } = require("electron-updater");
+// Keep a global reference of the window object, if you don't, the window will
+// be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 app.disableHardwareAcceleration()
 
@@ -36,10 +37,7 @@ function createWindow () {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', () => {
-  setTimeout(createWindow, 50)
-  autoUpdater.checkForUpdatesAndNotify();
-})
+app.on('ready', () => setTimeout(createWindow, 50))
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
