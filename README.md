@@ -34,6 +34,12 @@
 - Sometimes on startup, the background becomes black, instead of transparent. This can be resolved by closing and restarting the application.
 - The widget can be built for Windows, but the application won't stick to your desktop. This is because the `desktop` window type in electron only works on X11 and Linux systems.
 
+## To uninstall
+Run this in the terminal
+```
+sudo apt-get remove pixelweather
+```
+
 
 ## Credits
 - This widget is [Powered by Dark Sky](https://darksky.net/poweredby/)
