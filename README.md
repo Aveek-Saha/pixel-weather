@@ -40,6 +40,9 @@ Run this in the terminal
 sudo apt-get remove pixelweather
 ```
 
+## Other cool things I made
+- [Dusk Player](https://github.com/Aveek-Saha/MusicPlayer): A minimalistic music player, designed for simplicity.
+- [YTDX](https://github.com/Aveek-Saha/ytdx): A YouTube audio downloader
 
 ## Credits
 - This widget is [Powered by Dark Sky](https://darksky.net/poweredby/)
