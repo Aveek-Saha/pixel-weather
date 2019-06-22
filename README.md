@@ -5,7 +5,7 @@
 </h1>
 
 <h3 align="center">
-    <img src ="https://img.shields.io/badge/platform-linux-blue.svg?style=for-the-badge">
+    <img src ="https://img.shields.io/badge/platform-linux-green.svg?style=for-the-badge">
     <img src ="https://img.shields.io/github/stars/Aveek-Saha/pixel-weather.svg?style=for-the-badge">
     <img src ="https://img.shields.io/github/forks/Aveek-Saha/pixel-weather.svg?style=for-the-badge">
 </h3>
