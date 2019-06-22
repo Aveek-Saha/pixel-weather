@@ -87,6 +87,7 @@ function openSettings() {
             nodeIntegration: true
         }
     });
+    win.setMenu(null)
     win.on('close', () => { win = null });
     win.loadFile('settings.html');
     win.show();
