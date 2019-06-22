@@ -4,8 +4,11 @@
 
 </h1>
 
-<!-- <h3 align="center">
-</h3> -->
+<h3 align="center">
+    <img src ="https://img.shields.io/badge/platform-linux-blue.svg?style=for-the-badge">
+    <img src ="https://img.shields.io/github/stars/Aveek-Saha/pixel-weather.svg?style=for-the-badge">
+    <img src ="https://img.shields.io/github/forks/Aveek-Saha/pixel-weather.svg?style=for-the-badge">
+</h3>
 
 
 <h3 align="center"> A small and compact 8 bit style weather widget designed for your desktop. <h3>
