@@ -43,6 +43,7 @@ sudo apt-get remove pixelweather
 ## Other cool things I made
 - [Dusk Player](https://github.com/Aveek-Saha/MusicPlayer): A minimalistic music player, designed for simplicity.
 - [YTDX](https://github.com/Aveek-Saha/ytdx): A YouTube audio downloader
+- [Hasty Heroes](https://github.com/Aveek-Saha/HastyHeroes): An endless 2D jumping game
 
 ## Credits
 - This widget is [Powered by Dark Sky](https://darksky.net/poweredby/)
