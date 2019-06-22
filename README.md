@@ -1,17 +1,30 @@
 # Pixel Weather
 
-A small and compact weather widget meant for your desktop. Your location is automatically found from your IP address. The reansparent background allows it to blend in with your current setup.
+A small and compact 8 bit style weather widget designed for your desktop.
 
-There is a dark mode and a light mode, for lighter and darker backgrounds respectively. 
+# Features
 
-## To do
+- It's transparent background allows it to blend in with your current setup
+- Always stays on your desktop so it won't get in your way. This means it's hidden when you switch windows with `alt+tab`
+- Switch between dark mode and light mode, for lighter and darker backgrounds respectively.
+- Clean interface, with no clutter, all options can be accessed by right clicking.
 
-This project is still in its early stages. The main challenge as of now is to find a way to always keep the widget at the bottom of all other windows.
+# How to use
+- Install the package.
+- Sign up and get your API key from the [`Dark Sky`](https://darksky.net/dev) console.
+- When you open the app for the first time, a settings menu pops up, paste your API key there.
+- You can also change how often the weather is updated.
+- After submitting the settings, right click, refresh and wait for the weather to update.
+- You can choose where to place the widget by choosing from the Position menu.
+- The menu can be accessed by right clicking anywhere on the widget.
 
-PRs welcome.
+## Known Issues
+- Sometimes on startup, the background becomes black, instead of transparent. This can be resolved by closing and restarting the application.
+- The widget can be built for Windows, but the application won't stick to your desktop. This is because the `desktop` window type in electron only works on X11 and Linux systems.
+
 
 ## Credits
 - This widget is [Powered by Dark Sky](https://darksky.net/poweredby/)
-- [NES.css](https://nostalgic-css.github.io/NES.css/)
-- <div>Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 		    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-- <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/"                 title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"                 title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+- Settings menu components are from [NES.css](https://nostalgic-css.github.io/NES.css/)
+- <div>Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+- <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
