@@ -1,6 +1,15 @@
-# Pixel Weather
+<h1 align="center">
+	<br>
+	 Pixel Weather <img width = "32px" src = "https://github.com/Aveek-Saha/pixel-weather/blob/master/pixel.png">
 
-A small and compact 8 bit style weather widget designed for your desktop.
+</h1>
+
+<!-- <h3 align="center">
+</h3> -->
+
+
+<h3 align="center"> A small and compact 8 bit style weather widget designed for your desktop. <h3>
+
 
 # Features
 
