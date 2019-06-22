@@ -202,6 +202,7 @@ window.addEventListener('contextmenu', (e) => {
 
 
 function getWeather(api_key) {
+    location.innerHTML = "Loading..."
     axios.get(IP_API_URL)
         .then(function (response) {
             const ip = response.data.ip
