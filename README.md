@@ -33,6 +33,7 @@
 ## Known Issues
 - Sometimes on startup, the background becomes black, instead of transparent. This can be resolved by closing and restarting the application.
 - The widget can be built for Windows, but the application won't stick to your desktop. This is because the `desktop` window type in electron only works on X11 and Linux systems.
+- Sometimes the widget takes too long to load the weather, in that case check your internet connection, and try refreshing a couple of times. 
 
 ## To uninstall
 Run this in the terminal
