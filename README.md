@@ -22,7 +22,7 @@
 - Clean interface, with no clutter, all options can be accessed by right clicking.
 
 # How to use
-- Install the package.
+- Install the package with `npm install`.
 - Sign up and get your API key from the [`Dark Sky`](https://darksky.net/dev) console.
 - When you open the app for the first time, a settings menu pops up, paste your API key there.
 - You can also change how often the weather is updated.
