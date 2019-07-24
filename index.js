@@ -13,8 +13,8 @@ var type = "pixel"
 storage.get('settings', function (error, data) {
     if (error) throw error;
 
-    console.log(data);
-    
+    //console.log(data);
+
     if (data.api == undefined)
         openSettings()
     else if (data.refresh == undefined && data.api != undefined) {
@@ -37,7 +37,7 @@ ipc.on('update_store', (event, res) => {
         refresh()
     });
 })
- 
+
 const IP_API_URL = "https://api.ipify.org/?format=json";
 const LOCATION_API_URL = "https://www.iplocate.io/api/lookup/";
 const WEATHER_PARAMS = "?exclude=[hourly,daily,minutely,alerts,flags,minutely]&units=auto"
@@ -116,11 +116,10 @@ menu.append(new MenuItem({
         refresh()
     }
 }))
-
 menu.append(new MenuItem({ type: 'separator' }))
 menu.append(new MenuItem({
     label: 'Dark',
-    type: 'checkbox', 
+    type: 'checkbox',
     checked: true,
     click() {
         if(this.checked == false){
@@ -133,71 +132,102 @@ menu.append(new MenuItem({
         }
     }
 }))
-
 menu.append(new MenuItem({ type: 'separator' }))
 menu.append(new MenuItem({
     label: 'Position',
     submenu: [
         {
             label: 'Top Left',
+            type: 'checkbox',
             click: () => {
+                uncheckAll(0)
+                this.checked = true
                 positioner.move('topLeft')
             }
         }, {
         label: 'Top Right',
+        type: 'checkbox',
             click: () => {
-                positioner.move('topRight')
+                  uncheckAll(1)
+                  this.checked = true
+                  positioner.move('topRight')
             }
         },
         {
             label: 'Bottom Left',
+            type: 'checkbox',
             click: () => {
+                uncheckAll(2)
+                this.checked = true
                 positioner.move('bottomLeft')
             }
         },
         {
             label: 'Bottom Right',
+            type: 'checkbox',
             click: () => {
+                uncheckAll(3)
+                this.checked = true
                 positioner.move('bottomRight')
             }
         },
         {
             label: 'Top Center',
+            type: 'checkbox',
             click: () => {
+                uncheckAll(4)
+                this.checked = true
                 positioner.move('topCenter')
             }
         },
         {
             label: 'Bottom Center',
+            type: 'checkbox',
             click: () => {
+                uncheckAll(5)
+                this.checked = true
                 positioner.move('bottomCenter')
             }
         },
         {
             label: 'Left Center',
+            type: 'checkbox',
             click: () => {
+                uncheckAll(6)
+                this.checked = true
                 positioner.move('leftCenter')
             }
         },
         {
             label: 'Right Center',
+            type: 'checkbox',
             click: () => {
+                uncheckAll(7)
+                this.checked = true
                 positioner.move('rightCenter')
             }
         },
         {
             label: 'Center',
+            type: 'checkbox',
             click: () => {
-                positioner.move('center')
+              uncheckAll(8)
+              this.checked = true
+              positioner.move('center')
             }
         }
     ]
 }))
-
+function uncheckAll(preItem){
+  for(var i in menu.items[6].submenu.items)
+    if(menu.items[6].submenu.items[i].checked == true && i!=preItem)
+      menu.items[6].submenu.items[i].checked = false
+}
 // Prevent default action of right click in chromium. Replace with our menu.
 window.addEventListener('contextmenu', (e) => {
     e.preventDefault()
     menu.popup(remote.getCurrentWindow())
+    //console.log(menu.items)
 }, false)
 
 
@@ -206,11 +236,11 @@ function getWeather(api_key) {
     axios.get(IP_API_URL)
         .then(function (response) {
             const ip = response.data.ip
-            console.log(response.data.ip);
+            //console.log(response.data.ip);
 
             axios.get(LOCATION_API_URL + ip)
                 .then(function (response) {
-                    console.log([response.data.city, response.data.latitude, response.data.longitude]);
+                    //console.log([response.data.city, response.data.latitude, response.data.longitude]);
                     const longitude = response.data.longitude
                     const latitude = response.data.latitude
 
@@ -219,7 +249,7 @@ function getWeather(api_key) {
 
                     axios.get("https://api.darksky.net/forecast/" + api_key + "/" + latitude + "," + longitude + WEATHER_PARAMS)
                         .then(function (response) {
-                            console.log([response.data.currently.summary, response.data.currently.temperature, response.data.currently.icon]);
+                            //console.log([response.data.currently.summary, response.data.currently.temperature, response.data.currently.icon]);
                             temp.innerHTML = response.data.currently.temperature + "<sup>o</sup>"
                             summary.innerHTML = response.data.currently.summary
                             icon.src = "./icons/" + type + "/" + response.data.currently.icon + ".svg"
