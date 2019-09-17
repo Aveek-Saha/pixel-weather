@@ -8,6 +8,7 @@
     <img src ="https://img.shields.io/badge/platform-linux-green.svg?style=for-the-badge">
     <img src ="https://img.shields.io/github/stars/Aveek-Saha/pixel-weather.svg?style=for-the-badge">
     <img src ="https://img.shields.io/github/forks/Aveek-Saha/pixel-weather.svg?style=for-the-badge">
+	<img src ="https://img.shields.io/github/downloads/aveek-saha/pixel-weather/total?style=for-the-badge">
 </h3>
 
 
