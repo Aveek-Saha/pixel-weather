@@ -50,7 +50,7 @@
     "electron-builder": "20.38.3"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "electron-json-storage": "^4.1.6",
     "electron-positioner": "^4.1.0"
   }
